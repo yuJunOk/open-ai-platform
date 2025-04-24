@@ -19,6 +19,8 @@ create table tb_interface_info
 )
     comment '接口信息';
 
+INSERT INTO `db_multi`.`tb_interface_info` (`name`, `description`, `url`, `request_params`, `request_header`, `response_header`, `status`, `method`, `user_id`, `create_time`, `update_time`, `deleted`) VALUES ('GetUserName', '获取用户名', 'http://localhost:8081/api/name/user', '[\n	{\"name\": \"userName\", \"type\": \"string\"}\n]', '{\n  \"Content-Type\": \"application/json\"}', '{\n \"Content-Type\": \"application/json\"\n}', 1, 'POST', 1, '2025-04-21 18:37:37', '2025-04-22 22:39:18', 0);
+
 create table tb_user
 (
     id          bigint auto_increment comment 'id'
@@ -42,6 +44,8 @@ create table tb_user
 )
     comment '用户表';
 
+INSERT INTO `db_multi`.`tb_user` (`user_name`, `avatar_url`, `gender`, `login_name`, `login_pwd`, `access_key`, `secret_key`, `phone`, `email`, `status`, `user_role`, `create_time`, `update_time`, `deleted`) VALUES ('小a', 'https://vitejs.cn/vite3-cn/logo.svg', 0, '13416393834', '3371e00731ba0313ea06d12d97f0844e', 'f00b0e9cde309651143331bf73772934', 'f00b0e9cde309651143331bf73772934', '13416393834', '1375841038@qq.com', 0, 1, '2025-04-15 00:06:41', '2025-04-15 00:06:41', 0);
+
 create table tb_user_interface_info
 (
     id                bigint auto_increment comment '主键'
@@ -56,4 +60,6 @@ create table tb_user_interface_info
     deleted           tinyint  default 0                 not null comment '是否删除(0-未删, 1-已删)'
 )
     comment '用户调用接口关系';
+
+INSERT INTO `db_multi`.`tb_user_interface_info` ( `user_id`, `interface_info_id`, `total_num`, `left_num`, `status`, `create_time`, `update_time`, `deleted`) VALUES (1, 6, 51, 49, 0, '2025-04-23 00:57:12', '2025-04-23 01:05:16', 0);
 
